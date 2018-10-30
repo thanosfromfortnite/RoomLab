@@ -3,6 +3,8 @@ package Game;
 import People.Person;
 import Rooms.Room;
 import Rooms.WinningRoom;
+import Rooms.CoolerRoom;
+import Rooms.UhOhRoom;
 
 import java.util.Scanner;
 
@@ -28,6 +30,24 @@ public class Runner {
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
 		building[x][y] = new WinningRoom(x, y);
+		int a = (int) (Math.random() * building.length);
+		int b = (int) (Math.random() * building.length);
+		while (a == x) {
+			a = (int) (Math.random() * building.length);
+		}
+		while (b == y) {
+			b = (int) (Math.random() * building.length);
+		}
+		building[a][b] = new CoolerRoom(a, b);
+		int c = (int) (Math.random() * building.length);
+		int d = (int) (Math.random() * building.length);
+		while (c == a || c == x) {
+			c = (int) (Math.random() * building.length);
+		}
+		while (d == b || d == y) {
+			d = (int) (Math.random() * building.length);
+		}
+		building[c][d] = new UhOhRoom(c, d);
 		 
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person("FirstName", "FamilyName", 0,0);
